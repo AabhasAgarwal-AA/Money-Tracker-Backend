@@ -28,10 +28,16 @@ app.post("/api/v1/transaction", async(req, res) => {
         description: description,
         datetime: datetime
     });
-
-
     res.json(transaction);
 });
+
+app.get('/api/v1/transactions', async (req, res) => {
+    await mongoose.connect(MONGO_URL);
+    console.log(MONGO_URL);
+    const transactions = await TransactionModel.find();
+
+    res.json(transactions);
+})
 
 
 app.listen(4000);

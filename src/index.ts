@@ -3,6 +3,9 @@ import cors from "cors";
 import { TransactionModel } from "./db";
 import { MONGO_URL } from "./config";
 import mongoose from "mongoose";
+import * as dotenv from "dotenv";
+dotenv.config();  
+
 
 const app = express();
 app.use(cors());

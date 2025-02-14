@@ -1,10 +1,14 @@
 import express from "express";
 import cors from "cors";
 import { TransactionModel } from "./db";
-import { MONGO_URL } from "./config";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 dotenv.config();  
+
+const MONGO_URL = process.env.MONGO_URL;
+if (!MONGO_URL) {
+  throw new Error('MONGO_URI is not defined in the environment variables');
+}
 
 
 const app = express();
